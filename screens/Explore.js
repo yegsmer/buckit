@@ -1,26 +1,26 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import NavBar from "../components/NavBar";
+import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
 import ContentInnerContainer from "../components/ContentInnerContainer";
 import CategoryListContainer from "../components/CategoryListContainer";
 import ContentHeaderContainer from "../components/ContentHeaderContainer";
 import ListTitleContainerLarge from "../components/ListTitleContainerLarge";
-import Header from "../components/Header";
-import { Color } from "../GlobalStyles";
+import NavBar from "../components/NavBar";
+import { Color, Padding } from "../GlobalStyles";
 
 const Explore = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.explore}>
-      <NavBar
-        newPage="Home"
-        ellipse2={require("../assets/ellipse-2.png")}
-        newPage1="Profile"
-        navBarTop="85.31%"
-        navBarLeft="1.28%"
-        navBarWidth="97.44%"
-        navBarHeight="14.69%"
-        navBarRight="1.28%"
-        navBarBottom="0%"
+      <Header
+        headerTop="unset"
+        headerLeft="unset"
+        headerWidth="unset"
+        headerHeight="unset"
+        headerRight="unset"
+        headerBottom="unset"
       />
       <View style={styles.explorecontentcontainer}>
         <ContentInnerContainer />
@@ -35,14 +35,20 @@ const Explore = () => {
           <ListTitleContainerLarge />
         </View>
       </View>
-      <Header
-        logoItBox={require("../assets/logoitbox.png")}
-        headerTop="0%"
-        headerLeft="1.28%"
-        headerWidth="97.44%"
-        headerHeight="11.85%"
-        headerRight="1.28%"
-        headerBottom="88.15%"
+      <NavBar
+        newPage="Home"
+        ellipse2={require("../assets/ellipse-2.png")}
+        newPage1="Profile"
+        navBarTop="unset"
+        navBarLeft="unset"
+        navBarWidth={380}
+        navBarHeight={124}
+        navBarRight="unset"
+        navBarBottom="unset"
+        onNavButtonPress={() => navigation.navigate("Home")}
+        newPageLeft="24%"
+        onNavButtonPress1={() => navigation.navigate("Settings")}
+        onNavButtonPress2={() => navigation.navigate("Profile")}
       />
     </View>
   );
@@ -50,20 +56,18 @@ const Explore = () => {
 
 const styles = StyleSheet.create({
   exploreheaderboxlarge: {
+    position: "absolute",
     height: "17.24%",
     width: "97.22%",
     top: "0%",
     right: "1.39%",
     bottom: "82.76%",
     left: "1.39%",
-    position: "absolute",
   },
   explorecontentcontainer: {
-    top: 120,
-    left: 15,
-    width: 360,
+    alignSelf: "stretch",
     height: 580,
-    position: "absolute",
+    marginTop: 20,
   },
   explore: {
     backgroundColor: Color.white,
@@ -71,6 +75,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 844,
     overflow: "hidden",
+    paddingHorizontal: Padding.p_mini,
+    paddingVertical: 0,
+    alignItems: "center",
   },
 });
 

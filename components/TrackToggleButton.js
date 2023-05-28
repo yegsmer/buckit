@@ -1,11 +1,11 @@
 import React, { useMemo, memo } from "react";
-import { Pressable, Image, StyleSheet } from "react-native";
+import { Pressable, StyleSheet } from "react-native";
+import { Image } from "expo-image";
 
 const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const TrackToggleButton = memo(
   ({
     onTrackToggleButtonPress,
@@ -32,7 +32,7 @@ const TrackToggleButton = memo(
       >
         <Image
           style={styles.icon}
-          resizeMode="cover"
+          contentFit="cover"
           source={require("../assets/tracktogglebutton.png")}
         />
       </Pressable>

@@ -1,18 +1,19 @@
 import React, { useMemo, memo } from "react";
+import { Image } from "expo-image";
 import {
-  Image,
   StyleSheet,
   Text,
   View,
+  Pressable,
   ImageSourcePropType,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { FontSize, FontFamily, Color } from "../GlobalStyles";
 
 const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const CategoryIcon = memo(
   ({
     categoryIconRight,
@@ -36,15 +37,20 @@ const CategoryIcon = memo(
       categoryIconBottom,
     ]);
 
+    const navigation = useNavigation();
+
     return (
-      <View style={[styles.categoryicon, categoryIconStyle]}>
+      <Pressable
+        style={[styles.categoryicon, categoryIconStyle]}
+        onPress={() => navigation.navigate("ExploreLow")}
+      >
         <Image
           style={styles.categoryiconChild}
-          resizeMode="cover"
+          contentFit="cover"
           source={ellipse10}
         />
         <Text style={styles.icontitle}>{iconTitle}</Text>
-      </View>
+      </Pressable>
     );
   }
 );

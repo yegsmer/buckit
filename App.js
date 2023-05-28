@@ -2,13 +2,14 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import BackArrowFrame from "./screens/BackArrowFrame";
 import Home from "./screens/Home";
-import Settings from "./screens/Settings";
-import ExploreList from "./screens/ExploreList";
-import ExploreLow from "./screens/ExploreLow";
-import ExploreMid from "./screens/ExploreMid";
-import Explore from "./screens/Explore";
 import Profile from "./screens/Profile";
+import Explore from "./screens/Explore";
+import ExploreMid from "./screens/ExploreMid";
+import ExploreLow from "./screens/ExploreLow";
+import ExploreList from "./screens/ExploreList";
+import Settings from "./screens/Settings";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
@@ -30,28 +31,18 @@ const App = () => {
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
+              name="BackArrowFrame"
+              component={BackArrowFrame}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="Home"
               component={Home}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Settings"
-              component={Settings}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ExploreList"
-              component={ExploreList}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ExploreLow"
-              component={ExploreLow}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="ExploreMid"
-              component={ExploreMid}
+              name="Profile"
+              component={Profile}
               options={{ headerShown: false }}
             />
             <Stack.Screen
@@ -60,8 +51,23 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="Profile"
-              component={Profile}
+              name="ExploreMid"
+              component={ExploreMid}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ExploreLow"
+              component={ExploreLow}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ExploreList"
+              component={ExploreList}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Settings"
+              component={Settings}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

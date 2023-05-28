@@ -1,5 +1,6 @@
 import React, { memo } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image } from "expo-image";
+import { StyleSheet, Text, View } from "react-native";
 import { FontSize, FontFamily, Color } from "../GlobalStyles";
 
 const TrackCompletionButton = memo(() => {
@@ -9,7 +10,7 @@ const TrackCompletionButton = memo(() => {
     >
       <Image
         style={[styles.tracktoggleIcon, styles.tracktoggleIconPosition]}
-        resizeMode="cover"
+        contentFit="cover"
         source={require("../assets/tracktoggle.png")}
       />
       <Text style={styles.text}>30%</Text>

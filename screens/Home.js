@@ -1,24 +1,20 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
-import NavBar from "../components/NavBar";
-import ContentInnerContainer from "../components/ContentInnerContainer";
-import HomeFeedTracked from "../components/HomeFeedTracked";
+import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
 import FeedBox from "../components/FeedBox";
 import EventListBox from "../components/EventListBox";
-import Header from "../components/Header";
-import { Color } from "../GlobalStyles";
+import HomeFeedTracked from "../components/HomeFeedTracked";
+import NavBar from "../components/NavBar";
+import { Color, Border, Padding } from "../GlobalStyles";
 
 const Home = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.home}>
-      <NavBar
-        newPage="Profile"
-        ellipse2={require("../assets/ellipse-2.png")}
-        newPage1="Explore"
-      />
-      <View style={styles.homecontentcontainer}>
-        <ContentInnerContainer />
-        <HomeFeedTracked />
+    <View style={[styles.home, styles.homeBg]}>
+      <Header />
+      <View style={[styles.homecontentcontainer, styles.homeBg]}>
         <View style={styles.homefeedevents}>
           <FeedBox
             feedBoxHeight={280}
@@ -55,35 +51,55 @@ const Home = () => {
             friendEvent={`{User} completed {List_name} list`}
           />
         </View>
+        <HomeFeedTracked />
       </View>
-      <Header logoItBox={require("../assets/logoitbox.png")} />
+      <NavBar
+        newPage="Explore"
+        ellipse2={require("../assets/ellipse-2.png")}
+        newPage1="Profile"
+        navBarTop="unset"
+        navBarLeft="unset"
+        navBarWidth={380}
+        navBarHeight={124}
+        navBarRight="unset"
+        navBarBottom="unset"
+        onNavButtonPress={() => navigation.navigate("Explore")}
+        newPageLeft="15%"
+        onNavButtonPress1={() => navigation.navigate("Settings")}
+        onNavButtonPress2={() => navigation.navigate("Profile")}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  homeBg: {
+    overflow: "hidden",
+    backgroundColor: Color.white,
+  },
   homefeedevents: {
-    height: "48.28%",
-    width: "97.22%",
-    top: "0.86%",
-    right: "1.39%",
-    bottom: "50.86%",
-    left: "1.39%",
     position: "absolute",
+    top: 5,
+    left: 5,
+    width: 350,
+    height: 280,
   },
   homecontentcontainer: {
-    top: 120,
-    left: 15,
-    width: 360,
-    height: 580,
-    position: "absolute",
+    alignSelf: "stretch",
+    borderRadius: Border.br_mini,
+    borderStyle: "solid",
+    borderColor: "#000",
+    borderWidth: 10,
+    height: 600,
+    marginTop: 20,
   },
   home: {
-    backgroundColor: Color.white,
     flex: 1,
     width: "100%",
     height: 844,
-    overflow: "hidden",
+    paddingHorizontal: Padding.p_mini,
+    paddingVertical: 0,
+    alignItems: "center",
   },
 });
 

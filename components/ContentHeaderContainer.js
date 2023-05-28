@@ -6,7 +6,6 @@ const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const ContentHeaderContainer = memo(
   ({ contentHeaderContainerHeight, contentHeaderContainerBottom }) => {
     const contentHeaderContainerStyle = useMemo(() => {

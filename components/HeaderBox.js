@@ -9,13 +9,13 @@ const HeaderBox = memo(() => {
 const styles = StyleSheet.create({
   headerbox: {
     position: "absolute",
-    height: "100%",
+    marginTop: -50,
     width: "100%",
-    top: "0%",
+    top: "50%",
     right: "0%",
-    bottom: "0%",
     left: "0%",
     backgroundColor: Color.white,
+    height: 100,
   },
 });
 

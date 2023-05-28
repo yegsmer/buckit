@@ -1,30 +1,32 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import NavBar from "../components/NavBar";
+import { StyleSheet, View, Text, Pressable } from "react-native";
+import { Image } from "expo-image";
+import { useNavigation } from "@react-navigation/native";
+import Header from "../components/Header";
 import ContentInnerContainer from "../components/ContentInnerContainer";
 import ListContainer from "../components/ListContainer";
 import EventListBox from "../components/EventListBox";
-import BackArrowIcon from "../components/BackArrowIcon";
-import Header from "../components/Header";
-import { Border, Color, FontSize, FontFamily } from "../GlobalStyles";
+import BackArrowFrame1 from "../components/BackArrowFrame1";
+import { Border, Color, FontSize, FontFamily, Padding } from "../GlobalStyles";
 
 const Settings = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.settings}>
-      <NavBar
-        newPage="Home"
-        ellipse2={require("../assets/ellipse-2.png")}
-        newPage1="Profile"
-        navBarTop={720}
-        navBarLeft={5}
-        navBarWidth={380}
-        navBarHeight={124}
-        navBarRight="unset"
-        navBarBottom="unset"
+      <Header
+        headerTop="unset"
+        headerLeft="unset"
+        headerWidth="unset"
+        headerHeight="unset"
+        headerRight="unset"
+        headerBottom="unset"
       />
       <View style={styles.settingscontentcontainer}>
         <ContentInnerContainer />
-        <View style={styles.settingscontainer}>
+        <View
+          style={[styles.settingscontainer, styles.settingscontainerPosition]}
+        >
           <ListContainer />
           <EventListBox
             eventListBoxTop="70.83%"
@@ -69,56 +71,116 @@ const Settings = () => {
             friendEvent={`{User} completed {List_name} list`}
           />
         </View>
-        <View style={styles.pageheaderboxsmall}>
+        <View
+          style={[styles.pageheaderboxsmall, styles.settingscontainerPosition]}
+        >
           <View
             style={[styles.contentheadercontainer, styles.listtitleboxPosition]}
           />
           <View style={styles.listtitlecontainersmall}>
             <View style={[styles.listtitlebox, styles.listtitleboxPosition]} />
-            <Text style={styles.explore}>Settings</Text>
+            <Text style={[styles.explore, styles.exploreFlexBox]}>
+              Settings
+            </Text>
           </View>
-          <BackArrowIcon backArrow={require("../assets/backarrow2.png")} />
+          <BackArrowFrame1
+            onBackArrowFramePress={() => navigation.goBack()}
+            backArrowFrameTop="21%"
+            backArrowFrameBottom="20%"
+            backArrowFrameHeight="59%"
+            icon={require("../assets/backarrowframe2.png")}
+          />
         </View>
       </View>
-      <Header
-        logoItBox={require("../assets/logoitbox.png")}
-        headerTop={0}
-        headerLeft={5}
-        headerWidth={380}
-        headerHeight={100}
-        headerRight="unset"
-        headerBottom="unset"
-      />
+      <View style={styles.navbar}>
+        <View style={[styles.navbox, styles.navboxPosition]} />
+        <Pressable
+          style={[styles.navbutton, styles.navbuttonPosition]}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Image
+            style={[styles.navbuttonChild, styles.navboxPosition]}
+            contentFit="cover"
+            source={require("../assets/ellipse-2.png")}
+          />
+          <Text style={[styles.newpage, styles.newpageTypo]}>Home</Text>
+        </Pressable>
+        <View style={styles.navbutton1}>
+          <Image
+            style={[styles.navbuttonChild, styles.navboxPosition]}
+            contentFit="cover"
+            source={require("../assets/ellipse-2.png")}
+          />
+          <Text style={[styles.newpage1, styles.newpageTypo]}>Settings</Text>
+        </View>
+        <Pressable
+          style={[styles.navbutton2, styles.navbuttonPosition]}
+          onPress={() => navigation.navigate("Profile")}
+        >
+          <Image
+            style={[styles.navbuttonChild, styles.navboxPosition]}
+            contentFit="cover"
+            source={require("../assets/ellipse-2.png")}
+          />
+          <Text style={[styles.newpage2, styles.newpageTypo]}>Profile</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  settingscontainerPosition: {
+    left: "4.2%",
+    right: "4.2%",
+    width: "91.6%",
+    position: "absolute",
+  },
   listtitleboxPosition: {
     borderRadius: Border.br_mini,
     left: "0%",
     bottom: "0%",
     right: "0%",
-    height: "100%",
     top: "0%",
+    height: "100%",
     position: "absolute",
     width: "100%",
   },
-  settingscontainer: {
-    height: "81.03%",
-    top: "17.24%",
-    bottom: "1.72%",
-    left: "1.39%",
-    right: "1.39%",
-    width: "97.22%",
-    position: "absolute",
+  exploreFlexBox: {
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
   },
-  contentheadercontainer: {
-    backgroundColor: Color.white,
+  navboxPosition: {
     left: "0%",
     bottom: "0%",
     right: "0%",
+    top: "0%",
     height: "100%",
+    position: "absolute",
+    width: "100%",
+  },
+  navbuttonPosition: {
+    bottom: "25.81%",
+    top: "25.81%",
+    width: "26.32%",
+    height: "48.39%",
+    position: "absolute",
+  },
+  newpageTypo: {
+    color: Color.black,
+    fontSize: FontSize.size_5xl,
+    textAlign: "center",
+    fontFamily: FontFamily.bubblegumSansRegular,
+    position: "absolute",
+  },
+  settingscontainer: {
+    height: "78.33%",
+    top: "18.33%",
+    bottom: "3.33%",
+  },
+  contentheadercontainer: {
+    backgroundColor: Color.white,
   },
   listtitlebox: {
     backgroundColor: Color.turquoise,
@@ -132,12 +194,11 @@ const styles = StyleSheet.create({
     top: "18.57%",
     left: "3.6%",
     fontSize: FontSize.size_17xl,
-    fontFamily: FontFamily.bubblegumSansRegular,
     color: Color.white,
     textAlign: "center",
-    display: "flex",
-    alignItems: "center",
+    fontFamily: FontFamily.bubblegumSansRegular,
     justifyContent: "center",
+    display: "flex",
     position: "absolute",
   },
   listtitlecontainersmall: {
@@ -150,26 +211,77 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   pageheaderboxsmall: {
-    height: "17.24%",
-    bottom: "82.76%",
-    top: "0%",
-    left: "1.39%",
-    right: "1.39%",
-    width: "97.22%",
-    position: "absolute",
+    height: "16.67%",
+    top: "1.67%",
+    bottom: "81.67%",
   },
   settingscontentcontainer: {
-    top: 120,
-    left: 15,
-    width: 360,
-    height: 580,
+    alignSelf: "stretch",
+    height: 600,
+    marginTop: 5,
+  },
+  navbox: {
+    backgroundColor: Color.white,
+  },
+  navbuttonChild: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+    overflow: "hidden",
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    top: "0%",
+    height: "100%",
+  },
+  newpage: {
+    left: "24%",
+    top: "26.67%",
+    color: Color.black,
+    fontSize: FontSize.size_5xl,
+  },
+  navbutton: {
+    right: "70%",
+    left: "3.68%",
+  },
+  newpage1: {
+    height: "45%",
+    width: "71%",
+    top: "28.33%",
+    left: "15%",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
+  },
+  navbutton1: {
+    top: 32,
+    left: 140,
+    width: 100,
+    height: 60,
     position: "absolute",
+  },
+  newpage2: {
+    left: "20%",
+    top: "26.67%",
+    color: Color.black,
+    fontSize: FontSize.size_5xl,
+  },
+  navbutton2: {
+    right: "3.68%",
+    left: "70%",
+  },
+  navbar: {
+    width: 380,
+    height: 124,
+    marginTop: 5,
   },
   settings: {
     flex: 1,
     height: 844,
-    overflow: "hidden",
+    paddingHorizontal: Padding.p_mini,
+    paddingVertical: 0,
+    alignItems: "center",
     width: "100%",
+    overflow: "hidden",
     backgroundColor: Color.white,
   },
 });

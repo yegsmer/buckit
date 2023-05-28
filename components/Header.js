@@ -1,5 +1,5 @@
 import React, { useMemo, memo } from "react";
-import { Text, StyleSheet, View, ImageSourcePropType } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import HeaderBox from "./HeaderBox";
 import LogoItBoxIcon from "./LogoItBoxIcon";
 import { Color, FontSize, FontFamily } from "../GlobalStyles";
@@ -8,10 +8,8 @@ const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const Header = memo(
   ({
-    logoItBox,
     headerTop,
     headerLeft,
     headerWidth,
@@ -40,42 +38,36 @@ const Header = memo(
     return (
       <View style={[styles.header, headerStyle]}>
         <HeaderBox />
-        <LogoItBoxIcon logoItBox={logoItBox} />
-        <Text style={[styles.it, styles.itFlexBox]}>IT</Text>
-        <Text style={[styles.buck, styles.itFlexBox]}>Buck</Text>
+        <LogoItBoxIcon />
+        <Text style={[styles.it, styles.itPosition]}>IT</Text>
+        <Text style={[styles.buck, styles.itPosition]}>Buck</Text>
       </View>
     );
   }
 );
 
 const styles = StyleSheet.create({
-  itFlexBox: {
+  itPosition: {
     textAlign: "right",
     color: Color.black,
+    top: "50%",
     position: "absolute",
   },
   it: {
-    height: "30%",
-    width: "10.53%",
-    top: "35%",
-    left: "65%",
+    marginTop: -15,
+    left: "66.55%",
     fontSize: FontSize.size_21xl,
     fontFamily: FontFamily.bubblegumSansRegular,
   },
   buck: {
-    height: "100%",
-    width: "52.63%",
-    top: "0%",
-    left: "1.84%",
+    marginTop: -50,
+    left: "16.01%",
     fontSize: FontSize.size_77xl,
     fontFamily: FontFamily.birthstoneRegular,
   },
   header: {
-    top: 0,
-    left: 5,
-    width: 380,
-    height: 100,
-    position: "absolute",
+    alignSelf: "stretch",
+    flex: 1,
   },
 });
 

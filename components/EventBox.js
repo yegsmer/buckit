@@ -6,7 +6,6 @@ const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const EventBox = memo(({ eventBoxBorderColor, eventBoxBorderWidth }) => {
   const eventBoxStyle = useMemo(() => {
     return {

@@ -1,26 +1,30 @@
 import React, { memo } from "react";
-import { Image, StyleSheet, ImageSourcePropType } from "react-native";
+import { Image } from "expo-image";
+import { StyleSheet } from "react-native";
 import { Border } from "../GlobalStyles";
 
-const LogoItBoxIcon = memo(({ logoItBox }) => {
+const LogoItBoxIcon = memo(() => {
   return (
-    <Image style={styles.logoitboxIcon} resizeMode="cover" source={logoItBox} />
+    <Image
+      style={styles.logoitboxIcon}
+      contentFit="cover"
+      source={require("../assets/logoitbox.png")}
+    />
   );
 });
 
 const styles = StyleSheet.create({
   logoitboxIcon: {
     position: "absolute",
-    height: "80%",
+    marginTop: -26.42,
     width: "52.63%",
-    top: "23.25%",
-    right: "-10.09%",
-    bottom: "-3.25%",
-    left: "57.46%",
+    top: "50%",
+    right: "-10%",
+    left: "57.37%",
     borderRadius: Border.br_mini,
     maxWidth: "100%",
     overflow: "hidden",
-    maxHeight: "100%",
+    height: 80,
   },
 });
 

@@ -7,7 +7,6 @@ const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const EventListBox = memo(
   ({
     eventListBoxTop,

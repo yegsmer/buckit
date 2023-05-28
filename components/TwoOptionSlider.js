@@ -1,21 +1,53 @@
-import React, { memo } from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import React, { useMemo, memo } from "react";
+import { StyleSheet, View, Text, ImageSourcePropType } from "react-native";
+import { Image } from "expo-image";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 
-const TwoOptionSlider = memo(() => {
-  return (
-    <View style={styles.twooptionslider}>
-      <View style={styles.twooptionsliderChild} />
-      <Image
-        style={styles.twooptionsliderItem}
-        resizeMode="cover"
-        source={require("../assets/ellipse-3.png")}
-      />
-      <Text style={[styles.newsFeed, styles.badgesFlexBox]}>Nominees</Text>
-      <Text style={[styles.badges, styles.badgesFlexBox]}>Winners</Text>
-    </View>
-  );
-});
+const getStyleValue = (key, value) => {
+  if (value === undefined) return;
+  return { [key]: value === "unset" ? undefined : value };
+};
+const TwoOptionSlider = memo(
+  ({
+    twoOptionSliderHeight,
+    twoOptionSliderTop,
+    twoOptionSliderRight,
+    twoOptionSliderBottom,
+    twoOptionSliderLeft,
+    ellipse3,
+    newsFeed,
+    badges,
+  }) => {
+    const twoOptionSliderStyle = useMemo(() => {
+      return {
+        ...getStyleValue("height", twoOptionSliderHeight),
+        ...getStyleValue("top", twoOptionSliderTop),
+        ...getStyleValue("right", twoOptionSliderRight),
+        ...getStyleValue("bottom", twoOptionSliderBottom),
+        ...getStyleValue("left", twoOptionSliderLeft),
+      };
+    }, [
+      twoOptionSliderHeight,
+      twoOptionSliderTop,
+      twoOptionSliderRight,
+      twoOptionSliderBottom,
+      twoOptionSliderLeft,
+    ]);
+
+    return (
+      <View style={[styles.twooptionslider, twoOptionSliderStyle]}>
+        <View style={styles.twooptionsliderChild} />
+        <Image
+          style={styles.twooptionsliderItem}
+          contentFit="cover"
+          source={ellipse3}
+        />
+        <Text style={[styles.newsFeed, styles.badgesFlexBox]}>{newsFeed}</Text>
+        <Text style={[styles.badges, styles.badgesFlexBox]}>{badges}</Text>
+      </View>
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   badgesFlexBox: {
@@ -64,12 +96,12 @@ const styles = StyleSheet.create({
     left: "0%",
   },
   twooptionslider: {
-    height: "38.24%",
+    height: "23.21%",
     width: "45.71%",
-    top: "61.76%",
-    right: "2.86%",
-    bottom: "0%",
-    left: "51.43%",
+    top: "75%",
+    right: "4.29%",
+    bottom: "1.79%",
+    left: "50%",
     position: "absolute",
   },
 });

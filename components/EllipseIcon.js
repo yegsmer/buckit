@@ -1,11 +1,12 @@
 import React, { memo } from "react";
-import { Image, StyleSheet, ImageSourcePropType } from "react-native";
+import { Image } from "expo-image";
+import { StyleSheet, ImageSourcePropType } from "react-native";
 
 const EllipseIcon = memo(({ ellipse5 }) => {
   return (
     <Image
       style={styles.trackediconChild}
-      resizeMode="cover"
+      contentFit="cover"
       source={ellipse5}
     />
   );

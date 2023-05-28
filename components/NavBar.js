@@ -1,19 +1,19 @@
 import React, { useMemo, memo } from "react";
+import { Image } from "expo-image";
 import {
-  Image,
   StyleSheet,
   Text,
   View,
+  Pressable,
   ImageSourcePropType,
 } from "react-native";
 import NavBox from "./NavBox";
-import { FontSize, FontFamily, Color } from "../GlobalStyles";
+import { Color, FontFamily, FontSize } from "../GlobalStyles";
 
 const getStyleValue = (key, value) => {
   if (value === undefined) return;
   return { [key]: value === "unset" ? undefined : value };
 };
-
 const NavBar = memo(
   ({
     newPage,
@@ -25,6 +25,10 @@ const NavBar = memo(
     navBarHeight,
     navBarRight,
     navBarBottom,
+    onNavButtonPress,
+    newPageLeft,
+    onNavButtonPress1,
+    onNavButtonPress2,
   }) => {
     const navBarStyle = useMemo(() => {
       return {
@@ -44,25 +48,47 @@ const NavBar = memo(
       navBarBottom,
     ]);
 
+    const newPageStyle = useMemo(() => {
+      return {
+        ...getStyleValue("left", newPageLeft),
+      };
+    }, [newPageLeft]);
+
     return (
       <View style={[styles.navbar, navBarStyle]}>
         <NavBox />
-        <View style={[styles.navbutton, styles.navbuttonPosition]}>
+        <Pressable
+          style={[styles.navbutton, styles.navbuttonPosition]}
+          onPress={onNavButtonPress}
+        >
           <Image
             style={styles.navbuttonChild}
-            resizeMode="cover"
+            contentFit="cover"
             source={ellipse2}
           />
-          <Text style={styles.newpage}>{newPage}</Text>
-        </View>
-        <View style={[styles.navbutton1, styles.navbuttonPosition]}>
+          <Text style={[styles.newpage, styles.newpageTypo, newPageStyle]}>
+            {newPage}
+          </Text>
+        </Pressable>
+        <Pressable style={styles.navbutton1} onPress={onNavButtonPress1}>
           <Image
             style={styles.navbuttonChild}
-            resizeMode="cover"
+            contentFit="cover"
             source={require("../assets/ellipse-2.png")}
           />
-          <Text style={styles.newpage}>{newPage1}</Text>
-        </View>
+          <Text style={[styles.newpage1, styles.newpageTypo]}>Settings</Text>
+        </Pressable>
+        <Pressable
+          style={[styles.navbutton2, styles.navbuttonPosition]}
+          onPress={onNavButtonPress2}
+        >
+          <Image
+            style={styles.navbuttonChild}
+            contentFit="cover"
+            source={require("../assets/ellipse-2.png")}
+          />
+          <Text style={[styles.newpage2, styles.newpageTypo]}>{newPage1}</Text>
+        </Pressable>
       </View>
     );
   }
@@ -70,10 +96,17 @@ const NavBar = memo(
 
 const styles = StyleSheet.create({
   navbuttonPosition: {
-    bottom: "19.35%",
-    top: "8.06%",
-    width: "36.84%",
-    height: "72.58%",
+    bottom: "25.81%",
+    top: "25.81%",
+    width: "26.32%",
+    height: "48.39%",
+    position: "absolute",
+  },
+  newpageTypo: {
+    textAlign: "center",
+    color: Color.black,
+    fontFamily: FontFamily.bubblegumSansRegular,
+    fontSize: FontSize.size_5xl,
     position: "absolute",
   },
   navbuttonChild: {
@@ -89,30 +122,49 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   newpage: {
-    height: "33.33%",
-    width: "71.43%",
-    top: "33.33%",
-    left: "14.29%",
-    fontSize: FontSize.size_5xl,
-    fontFamily: FontFamily.bubblegumSansRegular,
-    color: Color.black,
+    left: "24%",
+    top: "26.67%",
     textAlign: "center",
-    position: "absolute",
+    color: Color.black,
+    fontFamily: FontFamily.bubblegumSansRegular,
+    fontSize: FontSize.size_5xl,
   },
   navbutton: {
-    right: "57.89%",
-    left: "5.26%",
+    right: "70%",
+    left: "3.68%",
+  },
+  newpage1: {
+    height: "45%",
+    width: "71%",
+    top: "28.33%",
+    left: "15%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   navbutton1: {
-    right: "7.89%",
-    left: "55.26%",
+    top: 32,
+    left: 140,
+    width: 100,
+    height: 60,
+    position: "absolute",
+  },
+  newpage2: {
+    left: "20%",
+    top: "26.67%",
+    textAlign: "center",
+    color: Color.black,
+    fontFamily: FontFamily.bubblegumSansRegular,
+    fontSize: FontSize.size_5xl,
+  },
+  navbutton2: {
+    right: "3.68%",
+    left: "70%",
   },
   navbar: {
-    top: 720,
-    left: 5,
     width: 380,
     height: 124,
-    position: "absolute",
+    marginTop: 20,
   },
 });
 
