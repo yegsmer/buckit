@@ -9,7 +9,6 @@ import ExploreMid from "./screens/ExploreMid";
 import ExploreLow from "./screens/ExploreLow";
 import ExploreList from "./screens/ExploreList";
 import Settings from "./screens/Settings";
-import BackArrowFrame from "./screens/BackArrowFrame";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
@@ -63,11 +62,6 @@ const App = () => {
             <Stack.Screen
               name="Settings"
               component={Settings}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="BackArrowFrame"
-              component={BackArrowFrame}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
