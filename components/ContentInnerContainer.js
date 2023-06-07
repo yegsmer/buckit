@@ -9,12 +9,12 @@ const ContentInnerContainer = memo(() => {
 const styles = StyleSheet.create({
   contentinnercontainer: {
     position: "absolute",
-    height: "103.45%",
-    width: "105.56%",
-    top: "-1.72%",
-    right: "-2.78%",
-    bottom: "-1.72%",
-    left: "-2.78%",
+    height: "100%",
+    width: "99.77%",
+    top: "0%",
+    right: "0.12%",
+    bottom: "0%",
+    left: "0.12%",
     borderRadius: Border.br_mini,
     backgroundColor: Color.white,
     borderStyle: "solid",

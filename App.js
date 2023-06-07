@@ -2,7 +2,6 @@ const Stack = createNativeStackNavigator();
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import BackArrowFrame from "./screens/BackArrowFrame";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
 import Explore from "./screens/Explore";
@@ -10,6 +9,7 @@ import ExploreMid from "./screens/ExploreMid";
 import ExploreLow from "./screens/ExploreLow";
 import ExploreList from "./screens/ExploreList";
 import Settings from "./screens/Settings";
+import BackArrowFrame from "./screens/BackArrowFrame";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
@@ -30,11 +30,6 @@ const App = () => {
       <NavigationContainer>
         {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="BackArrowFrame"
-              component={BackArrowFrame}
-              options={{ headerShown: false }}
-            />
             <Stack.Screen
               name="Home"
               component={Home}
@@ -68,6 +63,11 @@ const App = () => {
             <Stack.Screen
               name="Settings"
               component={Settings}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BackArrowFrame"
+              component={BackArrowFrame}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

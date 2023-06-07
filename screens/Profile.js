@@ -3,9 +3,8 @@ import { StyleSheet, View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header";
-import ContentInnerContainer from "../components/ContentInnerContainer";
-import HomeFeedTracked from "../components/HomeFeedTracked";
 import TwoOptionSlider from "../components/TwoOptionSlider";
+import HomeFeedTracked from "../components/HomeFeedTracked";
 import NavBar from "../components/NavBar";
 import { Color, FontFamily, Border, FontSize, Padding } from "../GlobalStyles";
 
@@ -22,9 +21,9 @@ const Profile = () => {
         headerRight="unset"
         headerBottom="unset"
       />
-      <View style={styles.profilecontentcontainer}>
-        <ContentInnerContainer />
-        <HomeFeedTracked />
+      <View
+        style={[styles.profilecontentcontainer, styles.usernameboxChildBorder]}
+      >
         <View style={styles.profileheaderbox}>
           <View style={[styles.homefeedbox, styles.childPosition]} />
           <Image
@@ -84,6 +83,7 @@ Friends`}</Text>
             badges="Badges"
           />
         </View>
+        <HomeFeedTracked />
       </View>
       <NavBar
         newPage="Home"
@@ -105,6 +105,11 @@ Friends`}</Text>
 };
 
 const styles = StyleSheet.create({
+  usernameboxChildBorder: {
+    borderColor: "#000",
+    borderStyle: "solid",
+    backgroundColor: Color.white,
+  },
   childPosition: {
     left: "0%",
     bottom: "0%",
@@ -140,8 +145,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   homefeedbox: {
-    borderRadius: Border.br_mini,
     position: "absolute",
+    borderRadius: Border.br_mini,
     backgroundColor: Color.white,
     left: "0%",
     bottom: "0%",
@@ -161,17 +166,12 @@ const styles = StyleSheet.create({
     borderRadius: Border.br_26xl,
   },
   usernameboxChild: {
-    borderStyle: "solid",
-    borderColor: "#000",
     borderWidth: 1,
     borderRadius: Border.br_26xl,
     position: "absolute",
+    borderColor: "#000",
+    borderStyle: "solid",
     backgroundColor: Color.white,
-    left: "0%",
-    bottom: "0%",
-    right: "0%",
-    top: "0%",
-    height: "100%",
   },
   gramstad6: {
     height: "60%",
@@ -263,18 +263,18 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   profileheaderbox: {
-    height: "48.28%",
-    width: "97.22%",
-    top: "0.86%",
-    right: "1.39%",
-    bottom: "50.86%",
-    left: "1.39%",
-    position: "absolute",
+    width: 350,
+    height: 280,
   },
   profilecontentcontainer: {
-    alignSelf: "stretch",
-    height: 580,
+    borderWidth: 10,
+    width: 380,
+    height: 600,
+    paddingHorizontal: Padding.p_8xs,
+    paddingBottom: Padding.p_8xs,
+    justifyContent: "flex-end",
     marginTop: 20,
+    borderRadius: Border.br_mini,
   },
   profile: {
     flex: 1,

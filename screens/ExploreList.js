@@ -30,7 +30,12 @@ const ExploreList = () => {
       <View style={styles.explorelistcontentcontainer}>
         <ContentInnerContainer />
         <ListContainerLow />
-        <View style={styles.exploreheaderboxtwooption}>
+        <View
+          style={[
+            styles.exploreheaderboxtwooption,
+            styles.backarrowframePosition,
+          ]}
+        >
           <ContentHeaderContainer />
           <TwoOptionSlider
             twoOptionSliderHeight="38.24%"
@@ -60,9 +65,18 @@ const ExploreList = () => {
             backArrowFrameTop="12.35%"
             backArrowFrameBottom="52.94%"
             backArrowFrameHeight="34.71%"
-            icon={require("../assets/backarrowframe1.png")}
           />
         </View>
+        <Pressable
+          style={[styles.backarrowframe, styles.backarrowframePosition]}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            style={[styles.icon, styles.iconLayout]}
+            contentFit="cover"
+            source={require("../assets/backarrowframe1.png")}
+          />
+        </Pressable>
       </View>
       <NavBar
         newPage="Home"
@@ -80,6 +94,10 @@ const styles = StyleSheet.create({
   iconLayout: {
     overflow: "hidden",
     width: "100%",
+  },
+  backarrowframePosition: {
+    left: "1.39%",
+    position: "absolute",
   },
   icon: {
     height: "100%",
@@ -101,8 +119,13 @@ const styles = StyleSheet.create({
     top: "0%",
     right: "1.39%",
     bottom: "70.69%",
-    left: "1.39%",
-    position: "absolute",
+  },
+  backarrowframe: {
+    top: "3.62%",
+    right: "77.78%",
+    bottom: "86.21%",
+    width: "20.83%",
+    height: "10.17%",
   },
   explorelistcontentcontainer: {
     width: 360,

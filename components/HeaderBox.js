@@ -9,7 +9,7 @@ const HeaderBox = memo(() => {
 const styles = StyleSheet.create({
   headerbox: {
     position: "absolute",
-    marginTop: -50,
+    marginTop: -49.5,
     width: "100%",
     top: "50%",
     right: "0%",

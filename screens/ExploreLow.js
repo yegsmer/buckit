@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header";
@@ -28,7 +28,12 @@ const ExploreLow = () => {
       <View style={styles.explorelowcontentcontainer}>
         <ContentInnerContainer />
         <ListContainerLow />
-        <View style={styles.exploreheaderboxthreeoption}>
+        <View
+          style={[
+            styles.exploreheaderboxthreeoption,
+            styles.backarrowframePosition,
+          ]}
+        >
           <ContentHeaderContainer
             contentHeaderContainerHeight="99.89%"
             contentHeaderContainerBottom="0.11%"
@@ -36,7 +41,7 @@ const ExploreLow = () => {
           <View style={styles.threeoptionslider}>
             <View style={styles.threeoptionsliderChild} />
             <Image
-              style={styles.threeoptionsliderItem}
+              style={[styles.threeoptionsliderItem, styles.iconLayout]}
               contentFit="cover"
               source={require("../assets/ellipse-3.png")}
             />
@@ -71,6 +76,16 @@ const ExploreLow = () => {
             icon={require("../assets/backarrowframe1.png")}
           />
         </View>
+        <Pressable
+          style={[styles.backarrowframe, styles.backarrowframePosition]}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            style={[styles.icon, styles.iconLayout]}
+            contentFit="cover"
+            source={require("../assets/backarrowframe1.png")}
+          />
+        </Pressable>
       </View>
       <NavBar
         newPage="Home"
@@ -92,6 +107,15 @@ const ExploreLow = () => {
 };
 
 const styles = StyleSheet.create({
+  backarrowframePosition: {
+    left: "1.39%",
+    position: "absolute",
+  },
+  iconLayout: {
+    maxHeight: "100%",
+    maxWidth: "100%",
+    overflow: "hidden",
+  },
   newsFlexBox: {
     justifyContent: "center",
     display: "flex",
@@ -133,12 +157,10 @@ const styles = StyleSheet.create({
     right: "75.21%",
     bottom: "45.47%",
     left: "4.13%",
-    maxHeight: "100%",
-    maxWidth: "100%",
     width: "20.66%",
     height: "46.74%",
+    maxWidth: "100%",
     position: "absolute",
-    overflow: "hidden",
   },
   newsFeed: {
     left: "70.25%",
@@ -196,8 +218,18 @@ const styles = StyleSheet.create({
     top: "0%",
     right: "1.39%",
     bottom: "70.66%",
-    left: "1.39%",
-    position: "absolute",
+  },
+  icon: {
+    height: "100%",
+    maxWidth: "100%",
+    width: "100%",
+  },
+  backarrowframe: {
+    top: "3.62%",
+    right: "77.78%",
+    bottom: "86.21%",
+    width: "20.83%",
+    height: "10.17%",
   },
   explorelowcontentcontainer: {
     width: 360,
@@ -206,12 +238,12 @@ const styles = StyleSheet.create({
   },
   explorelow: {
     flex: 1,
-    width: "100%",
     paddingHorizontal: Padding.p_8xs,
     paddingVertical: 0,
     alignItems: "center",
     overflow: "hidden",
     backgroundColor: Color.white,
+    width: "100%",
   },
 });
 

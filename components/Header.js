@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   it: {
-    marginTop: -15,
+    marginTop: -14.5,
     left: "66.55%",
     fontSize: FontSize.size_21xl,
     fontFamily: FontFamily.bubblegumSansRegular,
   },
   buck: {
-    marginTop: -50,
+    marginTop: -49.5,
     left: "16.01%",
     fontSize: FontSize.size_77xl,
     fontFamily: FontFamily.birthstoneRegular,

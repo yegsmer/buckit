@@ -91,6 +91,16 @@ const Settings = () => {
             icon={require("../assets/backarrowframe2.png")}
           />
         </View>
+        <Pressable
+          style={styles.backarrowframe}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            style={styles.iconLayout}
+            contentFit="cover"
+            source={require("../assets/backarrowframe.png")}
+          />
+        </Pressable>
       </View>
       <View style={styles.navbar}>
         <View style={[styles.navbox, styles.navboxPosition]} />
@@ -99,7 +109,7 @@ const Settings = () => {
           onPress={() => navigation.navigate("Home")}
         >
           <Image
-            style={[styles.navbuttonChild, styles.navboxPosition]}
+            style={[styles.navbuttonChild, styles.iconLayout]}
             contentFit="cover"
             source={require("../assets/ellipse-2.png")}
           />
@@ -107,7 +117,7 @@ const Settings = () => {
         </Pressable>
         <View style={styles.navbutton1}>
           <Image
-            style={[styles.navbuttonChild, styles.navboxPosition]}
+            style={[styles.navbuttonChild, styles.iconLayout]}
             contentFit="cover"
             source={require("../assets/ellipse-2.png")}
           />
@@ -118,7 +128,7 @@ const Settings = () => {
           onPress={() => navigation.navigate("Profile")}
         >
           <Image
-            style={[styles.navbuttonChild, styles.navboxPosition]}
+            style={[styles.navbuttonChild, styles.iconLayout]}
             contentFit="cover"
             source={require("../assets/ellipse-2.png")}
           />
@@ -156,9 +166,7 @@ const styles = StyleSheet.create({
     bottom: "0%",
     right: "0%",
     top: "0%",
-    height: "100%",
     position: "absolute",
-    width: "100%",
   },
   navbuttonPosition: {
     bottom: "25.81%",
@@ -166,6 +174,13 @@ const styles = StyleSheet.create({
     width: "26.32%",
     height: "48.39%",
     position: "absolute",
+  },
+  iconLayout: {
+    maxHeight: "100%",
+    maxWidth: "100%",
+    height: "100%",
+    overflow: "hidden",
+    width: "100%",
   },
   newpageTypo: {
     color: Color.black,
@@ -181,6 +196,7 @@ const styles = StyleSheet.create({
   },
   contentheadercontainer: {
     backgroundColor: Color.white,
+    borderRadius: Border.br_mini,
   },
   listtitlebox: {
     backgroundColor: Color.turquoise,
@@ -215,23 +231,35 @@ const styles = StyleSheet.create({
     top: "1.67%",
     bottom: "81.67%",
   },
+  backarrowframe: {
+    left: "4.17%",
+    top: "5.17%",
+    right: "75%",
+    bottom: "85%",
+    width: "20.83%",
+    height: "9.83%",
+    position: "absolute",
+  },
   settingscontentcontainer: {
     alignSelf: "stretch",
     height: 600,
     marginTop: 5,
   },
   navbox: {
-    backgroundColor: Color.white,
-  },
-  navbuttonChild: {
-    maxWidth: "100%",
-    maxHeight: "100%",
-    overflow: "hidden",
+    height: "100%",
     left: "0%",
     bottom: "0%",
     right: "0%",
     top: "0%",
-    height: "100%",
+    width: "100%",
+    backgroundColor: Color.white,
+  },
+  navbuttonChild: {
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    top: "0%",
+    position: "absolute",
   },
   newpage: {
     left: "24%",
@@ -280,8 +308,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: Padding.p_mini,
     paddingVertical: 0,
     alignItems: "center",
-    width: "100%",
     overflow: "hidden",
+    width: "100%",
     backgroundColor: Color.white,
   },
 });

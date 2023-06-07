@@ -27,7 +27,9 @@ const ExploreMid = () => {
         <CategoryListContainer
           ellipse10={`https://d1xzdqg8s8ggsr.cloudfront.net/641e27fa82031fcae6c8a9e7/9af59b18-210a-46d1-ae7e-c926bec91f5c_1679698113567531602?Expires=-62135596800&Signature=dVP~Msji98oJ-e6w0OilZST1aB7ZFfoxeiUbkdR9cHHL2BMboNpyeZ5F5lx3E-Mpz3W4SezGfE2~Xkr7XYeaakCuV8ki~cK531bJB0Ffr9QpCAB7mlPZ2Jprb99U0zmDvDtk3bhboAj~-pz42BGtLJ7OSPxil331yOJs6fJoE7j~vtOrPmn4nAYM1bbC9l5COzxck5ukVZMnIMAfvkZw66B6a4oeCYbOcrHqtNB2E2D2TfMKZ-~IOIIuwvYwHMdGaeVNIxxwbtdp4yojROTGjl5TevMIqn4HKLefklCnGGhgeKrK1qvCZG1LndKjifTjdmjjfHVTtQzFK5cirCVpnQ__&Key-Pair-Id=K1P54FZWCHCL6J`}
         />
-        <View style={styles.pageheaderboxsmall}>
+        <View
+          style={[styles.pageheaderboxsmall, styles.backarrowframe1Position]}
+        >
           <ContentHeaderContainer
             contentHeaderContainerHeight="100%"
             contentHeaderContainerBottom="0%"
@@ -49,6 +51,16 @@ const ExploreMid = () => {
             />
           </Pressable>
         </View>
+        <Pressable
+          style={[styles.backarrowframe1, styles.backarrowframe1Position]}
+          onPress={() => navigation.goBack()}
+        >
+          <Image
+            style={[styles.icon1, styles.iconLayout]}
+            contentFit="cover"
+            source={require("../assets/backarrowframe.png")}
+          />
+        </Pressable>
       </View>
       <View style={styles.navbar}>
         <View style={[styles.navbox, styles.navboxPosition]} />
@@ -91,6 +103,10 @@ const ExploreMid = () => {
 };
 
 const styles = StyleSheet.create({
+  backarrowframe1Position: {
+    left: "1.39%",
+    position: "absolute",
+  },
   iconLayout: {
     maxHeight: "100%",
     maxWidth: "100%",
@@ -120,6 +136,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   icon: {
+    display: "none",
     height: "100%",
     maxHeight: "100%",
     maxWidth: "100%",
@@ -139,9 +156,21 @@ const styles = StyleSheet.create({
     width: "97.22%",
     right: "1.39%",
     bottom: "82.76%",
-    left: "1.39%",
     top: "0%",
-    position: "absolute",
+    left: "1.39%",
+  },
+  icon1: {
+    height: "100%",
+    maxHeight: "100%",
+    maxWidth: "100%",
+    width: "100%",
+  },
+  backarrowframe1: {
+    top: "3.62%",
+    right: "77.78%",
+    bottom: "86.21%",
+    width: "20.83%",
+    height: "10.17%",
   },
   exploremidcontentcontainer: {
     alignSelf: "stretch",

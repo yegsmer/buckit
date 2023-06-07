@@ -51,11 +51,9 @@ const HomeFeedTracked = memo(() => {
 
 const styles = StyleSheet.create({
   homefeedtracked: {
-    position: "absolute",
-    top: 295,
-    left: 5,
-    width: 350,
+    alignSelf: "stretch",
     height: 280,
+    marginTop: 10,
   },
 });
 

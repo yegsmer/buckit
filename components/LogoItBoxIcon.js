@@ -16,7 +16,7 @@ const LogoItBoxIcon = memo(() => {
 const styles = StyleSheet.create({
   logoitboxIcon: {
     position: "absolute",
-    marginTop: -26.42,
+    marginTop: -25.92,
     width: "52.63%",
     top: "50%",
     right: "-10%",

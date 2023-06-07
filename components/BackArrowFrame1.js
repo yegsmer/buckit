@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     overflow: "hidden",
     maxHeight: "100%",
+    display: "none",
   },
   backarrowframe: {
     position: "absolute",
