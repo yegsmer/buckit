@@ -1,13 +1,13 @@
 import * as React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
+import { Image } from "expo-image";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header";
 import ContentInnerContainer from "../components/ContentInnerContainer";
-import CategoryListContainer from "../components/CategoryListContainer";
 import ContentHeaderContainer from "../components/ContentHeaderContainer";
 import ListTitleContainerLarge from "../components/ListTitleContainerLarge";
 import NavBar from "../components/NavBar";
-import { Color, Padding } from "../GlobalStyles";
+import { Color, Border, FontSize, FontFamily, Padding } from "../GlobalStyles";
 
 const Explore = () => {
   const navigation = useNavigation();
@@ -24,15 +24,133 @@ const Explore = () => {
       />
       <View style={styles.explorecontentcontainer}>
         <ContentInnerContainer />
-        <CategoryListContainer
-          ellipse10={`https://d1xzdqg8s8ggsr.cloudfront.net/641e27fa82031fcae6c8a9e7/9af59b18-210a-46d1-ae7e-c926bec91f5c_1679698113567531602?Expires=-62135596800&Signature=dVP~Msji98oJ-e6w0OilZST1aB7ZFfoxeiUbkdR9cHHL2BMboNpyeZ5F5lx3E-Mpz3W4SezGfE2~Xkr7XYeaakCuV8ki~cK531bJB0Ffr9QpCAB7mlPZ2Jprb99U0zmDvDtk3bhboAj~-pz42BGtLJ7OSPxil331yOJs6fJoE7j~vtOrPmn4nAYM1bbC9l5COzxck5ukVZMnIMAfvkZw66B6a4oeCYbOcrHqtNB2E2D2TfMKZ-~IOIIuwvYwHMdGaeVNIxxwbtdp4yojROTGjl5TevMIqn4HKLefklCnGGhgeKrK1qvCZG1LndKjifTjdmjjfHVTtQzFK5cirCVpnQ__&Key-Pair-Id=K1P54FZWCHCL6J`}
-        />
-        <View style={styles.exploreheaderboxlarge}>
+        <View
+          style={[styles.exploreheaderboxlarge, styles.listcontainerPosition]}
+        >
           <ContentHeaderContainer
             contentHeaderContainerHeight="100%"
             contentHeaderContainerBottom="0%"
           />
           <ListTitleContainerLarge />
+        </View>
+        <View style={[styles.listcontainer, styles.listcontainerPosition]}>
+          <View style={[styles.listcontainer1, styles.listcontainer1Bg]} />
+          <View
+            style={[styles.buttonsverticalscrollview, styles.listcontainer1Bg]}
+          >
+            <View style={[styles.visiblebuttonview, styles.listcontainer1Bg]}>
+              <Pressable
+                style={[styles.categoryicon, styles.literaturePosition]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Movies</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.literature, styles.categoryiconPosition3]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Literature</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.categoryicon1, styles.categoryiconPosition2]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Drink</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.categoryicon2, styles.categoryiconPosition2]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Food</Text>
+              </Pressable>
+              <View
+                style={[styles.categoryicon3, styles.categoryiconPosition1]}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Restaurants</Text>
+              </View>
+              <View
+                style={[styles.categoryicon4, styles.categoryiconPosition1]}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Restaurants</Text>
+              </View>
+              <Pressable
+                style={[styles.categoryicon5, styles.categoryiconPosition]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Televisions</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.categoryicon6, styles.categoryiconPosition]}
+                onPress={() => navigation.navigate("ExploreMid")}
+              >
+                <Image
+                  style={[
+                    styles.categoryiconChild,
+                    styles.listcontainer1Position,
+                  ]}
+                  contentFit="cover"
+                  source={require("../assets/ellipse-10.png")}
+                />
+                <Text style={styles.movies}>Travel</Text>
+              </Pressable>
+            </View>
+          </View>
         </View>
       </View>
       <NavBar
@@ -55,14 +173,148 @@ const Explore = () => {
 };
 
 const styles = StyleSheet.create({
-  exploreheaderboxlarge: {
-    position: "absolute",
-    height: "17.24%",
+  listcontainerPosition: {
+    left: "1.39%",
+    right: "1.39%",
     width: "97.22%",
+    position: "absolute",
+  },
+  listcontainer1Bg: {
+    backgroundColor: Color.black,
+    position: "absolute",
+  },
+  literaturePosition: {
+    bottom: "78.15%",
+    width: "40.37%",
+    height: "21.85%",
+    top: "0%",
+    position: "absolute",
+  },
+  listcontainer1Position: {
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    height: "100%",
+    top: "0%",
+    width: "100%",
+  },
+  categoryiconPosition3: {
+    left: "59.63%",
+    right: "0%",
+  },
+  categoryiconPosition2: {
+    bottom: "26.05%",
+    top: "52.1%",
+    width: "40.37%",
+    height: "21.85%",
+    position: "absolute",
+  },
+  categoryiconPosition1: {
+    top: "78.15%",
+    width: "40.37%",
+    height: "21.85%",
+    bottom: "0%",
+    position: "absolute",
+  },
+  categoryiconPosition: {
+    bottom: "52.1%",
+    top: "26.05%",
+    width: "40.37%",
+    height: "21.85%",
+    position: "absolute",
+  },
+  exploreheaderboxlarge: {
+    height: "17.24%",
+    bottom: "82.76%",
     top: "0%",
     right: "1.39%",
-    bottom: "82.76%",
-    left: "1.39%",
+    width: "97.22%",
+  },
+  listcontainer1: {
+    borderRadius: Border.br_mini,
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    height: "100%",
+    top: "0%",
+    width: "100%",
+  },
+  categoryiconChild: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+    position: "absolute",
+    overflow: "hidden",
+  },
+  movies: {
+    height: "30.77%",
+    width: "92.31%",
+    top: "34.62%",
+    left: "3.85%",
+    fontSize: FontSize.size_5xl,
+    fontFamily: FontFamily.bubblegumSansRegular,
+    color: Color.black,
+    textAlign: "center",
+    display: "flex",
+    justifyContent: "center",
+    position: "absolute",
+    alignItems: "center",
+  },
+  categoryicon: {
+    right: "59.63%",
+    left: "0%",
+  },
+  literature: {
+    bottom: "78.15%",
+    width: "40.37%",
+    height: "21.85%",
+    top: "0%",
+    position: "absolute",
+  },
+  categoryicon1: {
+    right: "59.63%",
+    left: "0%",
+  },
+  categoryicon2: {
+    left: "59.63%",
+    right: "0%",
+  },
+  categoryicon3: {
+    right: "59.63%",
+    left: "0%",
+  },
+  categoryicon4: {
+    left: "59.63%",
+    right: "0%",
+  },
+  categoryicon5: {
+    right: "59.63%",
+    left: "0%",
+  },
+  categoryicon6: {
+    left: "59.63%",
+    right: "0%",
+  },
+  visiblebuttonview: {
+    top: 0,
+    left: 0,
+    width: 322,
+    height: 595,
+  },
+  buttonsverticalscrollview: {
+    height: "96.17%",
+    width: "92%",
+    top: "1.91%",
+    right: "4%",
+    bottom: "1.91%",
+    left: "4%",
+  },
+  listcontainer: {
+    height: "81.03%",
+    top: "17.24%",
+    bottom: "1.72%",
+    right: "1.39%",
+    width: "97.22%",
+    overflow: "hidden",
   },
   explorecontentcontainer: {
     alignSelf: "stretch",
@@ -72,12 +324,12 @@ const styles = StyleSheet.create({
   explore: {
     backgroundColor: Color.white,
     flex: 1,
-    width: "100%",
     height: 844,
-    overflow: "hidden",
     paddingHorizontal: Padding.p_mini,
     paddingVertical: 0,
     alignItems: "center",
+    overflow: "hidden",
+    width: "100%",
   },
 });
 
